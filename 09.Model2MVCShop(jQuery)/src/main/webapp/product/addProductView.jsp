@@ -54,7 +54,7 @@ function fncAddProduct(){
 
 $(function() {
 	$( "td.ct_btn01:contains('등록')" ).on("click" , function() {
-		alert($("td.ct_btn01:contains('등록')").html());
+		//alert($("td.ct_btn01:contains('등록')").html());
 		fncAddProduct();
 	});
 });
@@ -65,7 +65,7 @@ $(function() {
 
 $(function() {
 	$( "td.ct_btn01:contains('취소')" ).on("click" , function() {
-		alert($("td.ct_btn01:contains('취소')").html());
+		//alert($("td.ct_btn01:contains('취소')").html());
 		$("form")[0].reset();
 	});
 });

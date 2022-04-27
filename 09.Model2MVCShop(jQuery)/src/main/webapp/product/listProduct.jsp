@@ -37,25 +37,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>상품 목록조회</title>
-
-<link rel="stylesheet" href="/css/admin.css" type="text/css">
-
-<script type="text/javascript">
-	//검색 / page 두가지 경우 모두 Form 전송을 위해 JavaScript 이용  
-	function fncGetUserList(currentPage) {
-		document.getElementById("currentPage").value = currentPage;
-	   	document.detailForm.submit();		
-	}
-</script>
+	<meta charset="EUC-KR">
+	<title>상품 목록조회</title>
+	
+	<link rel="stylesheet" href="/css/admin.css" type="text/css">
+	
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		//검색 / page 두가지 경우 모두 Form 전송을 위해 JavaScript 이용  
+		function fncGetUserList(currentPage) {
+			//document.getElementById("currentPage").value = currentPage;
+			$("#currentPage").val(currentPage)
+		   	//document.detailForm.submit();
+			$("form").attr("method","POST").attr("action","/product/listProduct?menu=${param.menu}").submit();
+		}
+	</script>
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
 
 <div style="width:98%; margin-left:10px;">
-
+<!-- 
 <form name="detailForm" action="/product/listProduct?menu=${param.menu}" method="post">
 
+ -->
+<form name="detailForm">
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
 		<td width="15" height="37">

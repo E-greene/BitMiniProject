@@ -16,10 +16,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<link rel="stylesheet" href="/css/admin.css" type="text/css">
-
-<title>상품상세조회</title>
+	<meta charset="EUC-KR">
+	<link rel="stylesheet" href="/css/admin.css" type="text/css">
+	
+	<title>상품상세조회</title>
+	
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+	
+		$(function() {
+			
+			$( "td.ct_btn01:contains('이전')").on("click" , function() {
+				history.go(-1);
+			});
+		});	
+	
+	</script>
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
@@ -151,7 +163,10 @@
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
+				<!--///////////////////////////////////////////////////////
 					<a href="javascript:history.go(-1)">이전</a>
+				 //////////////////////////////////////////////////////////// -->
+				 이전
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23">
