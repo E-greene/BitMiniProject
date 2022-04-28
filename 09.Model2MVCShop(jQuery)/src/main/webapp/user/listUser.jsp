@@ -58,9 +58,9 @@
 			//console.log ( $(".ct_list_pop:nth-child(1)" ).html() );
 			//console.log ( $(".ct_list_pop:nth-child(2)" ).html() );
 			//console.log ( $(".ct_list_pop:nth-child(3)" ).html() );
-			//console.log ( $(".ct_list_pop:nth-child(4)" ).html() ); //==> ok
+			console.log ( $(".ct_list_pop:nth-child(4)" ).html() ); //==> ok
 			//console.log ( $(".ct_list_pop:nth-child(5)" ).html() ); 
-			console.log ( $(".ct_list_pop:nth-child(6)" ).html() ); //==> ok
+			//console.log ( $(".ct_list_pop:nth-child(6)" ).html() ); //==> ok
 			//console.log ( $(".ct_list_pop:nth-child(7)" ).html() ); 
 		});	
 	</script>		

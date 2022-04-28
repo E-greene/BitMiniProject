@@ -45,12 +45,34 @@
 	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript">
 		//검색 / page 두가지 경우 모두 Form 전송을 위해 JavaScript 이용  
-		function fncGetUserList(currentPage) {
+		function fncGetProductList(currentPage) {
 			//document.getElementById("currentPage").value = currentPage;
 			$("#currentPage").val(currentPage)
 		   	//document.detailForm.submit();
 			$("form").attr("method","POST").attr("action","/product/listProduct?menu=${param.menu}").submit();
 		}
+		
+		$(function() {
+			$( "td.ct_btn01:contains('검색')" ).on("click", function() {
+				fncGetProductList('1');		
+			});
+			
+			
+			$( ".ct_list_pop td:nth-child(3)" ).on("click", function() {
+				var prodNo = $(this).
+				if(${param.menu == 'search'}){
+					self.location ="/product/getProduct?prodNo=${product.prodNo }";
+				}else if(${param.menu == 'manage'}){
+					self.location ="/product/updateProduct?prodNo=${product.prodNo }";
+				}
+			});
+			
+			
+			$( ".ct_list_pop td:nth-child(3)").css("color","green");
+			$("h7").css("color","blue");
+			
+		});
+		
 	</script>
 </head>
 
@@ -134,7 +156,10 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23">
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top:3px;">
-						<a href="javascript:fncGetProductList('1');">검색</a>
+						<!-- /////////////////////////////////////////////////////////
+						<a href="javascript:fncGetProductList('1');">검색</a>						
+						/////////////////////////////////////////////////////////// -->
+						검색
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23">
@@ -157,7 +182,13 @@
 	<tr>
 		<td class="ct_list_b" width="100">No</td>
 		<td class="ct_line02"></td>
-		<td class="ct_list_b" width="150">상품명</td>
+		<!-- ///////////////////////////////////////////////////
+		<td class="ct_list_b" width="150">상품명</td>		
+		/////////////////////////////////////////////////////// -->
+		<td class="ct_list_b" width="150">
+			click<br>
+			<h7>상품 상세정보 보기</h7>		
+		</td>	
 		<td class="ct_line02"></td>
 		<td class="ct_list_b" width="150">가격</td>
 		<td class="ct_line02"></td>
@@ -211,6 +242,7 @@
 		<tr class="ct_list_pop">
 			<td align="center">${i }</td>
 			<td></td>
+				<!-- /////////////////////////////////////////////////////////////////////////////////////
 				<c:choose>
 					<c:when test="${param.menu == 'search'}">
 						<td align="left"><a href="/product/getProduct?prodNo=${product.prodNo }">${product.prodName }</a></td>
@@ -219,6 +251,8 @@
 						<td align="left"><a href="/product/updateProduct?prodNo=${product.prodNo }">${product.prodName }</a></td>
 					</c:when>
 				</c:choose>
+				 ////////////////////////////////////////////////////////////////////////////////////////-->
+			<td align="left" id="productNamee" value="${product.prodNo }">${product.prodName }</td>
 			<td></td>
 			<td align="left">${product.price }</td>
 			<td></td>
