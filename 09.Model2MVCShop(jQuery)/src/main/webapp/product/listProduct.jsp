@@ -59,11 +59,10 @@
 			
 			
 			$( ".ct_list_pop td:nth-child(3)" ).on("click", function() {
-				var prodNo = $(this).
 				if(${param.menu == 'search'}){
-					self.location ="/product/getProduct?prodNo=${product.prodNo }";
+					self.location ="/product/getProduct?prodNo="+$(this).attr('prodNo');
 				}else if(${param.menu == 'manage'}){
-					self.location ="/product/updateProduct?prodNo=${product.prodNo }";
+					self.location ="/product/updateProduct?prodNo="+$(this).attr('prodNo');
 				}
 			});
 			
@@ -252,7 +251,7 @@
 					</c:when>
 				</c:choose>
 				 ////////////////////////////////////////////////////////////////////////////////////////-->
-			<td align="left" id="productNamee" value="${product.prodNo }">${product.prodName }</td>
+			<td align="left" prodNo="${product.prodNo }">${product.prodName }</td>
 			<td></td>
 			<td align="left">${product.price }</td>
 			<td></td>
