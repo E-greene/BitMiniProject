@@ -45,7 +45,7 @@
 	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript">
 		//검색 / page 두가지 경우 모두 Form 전송을 위해 JavaScript 이용  
-		function fncGetProductList(currentPage) {
+		function fncGetUserList(currentPage) {
 			//document.getElementById("currentPage").value = currentPage;
 			$("#currentPage").val(currentPage)
 		   	//document.detailForm.submit();
@@ -54,7 +54,7 @@
 		
 		$(function() {
 			$( "td.ct_btn01:contains('검색')" ).on("click", function() {
-				fncGetProductList('1');		
+				fncGetUserList('1');		
 			});
 			
 			
@@ -156,7 +156,7 @@
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top:3px;">
 						<!-- /////////////////////////////////////////////////////////
-						<a href="javascript:fncGetProductList('1');">검색</a>						
+						<a href="javascript:fncGetUserList('1');">검색</a>						
 						/////////////////////////////////////////////////////////// -->
 						검색
 					</td>

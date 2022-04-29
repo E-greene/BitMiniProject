@@ -53,6 +53,8 @@ public class ProductController {
 		
 		System.out.println("/product/addProduct : POST");
 		//Business Logic
+		String manuDate = product.getManuDate().replace("-","");
+		product.setManuDate(manuDate);
 		productService.addProduct(product);
 		
 		return "redirect:/product/addProductView.jsp";
