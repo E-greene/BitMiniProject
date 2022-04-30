@@ -1,37 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.model2.mvc.service.product.vo.*" %>
 
-<%--
-	<%@ page import="com.model2.mvc.service.domain.*" %>
-
-	<%
-		Product vo = (Product)request.getAttribute("product");
-	%>
---%>    
-
+<%
+	ProductVO vo = (ProductVO)request.getAttribute("vo");
+%>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
-	<link rel="stylesheet" href="/css/admin.css" type="text/css">
-	
-	<title>상품상세조회</title>
-	
-	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript">
-	
-		$(function() {
-			
-			$( "td.ct_btn01:contains('이전')").on("click" , function() {
-				history.go(-1);
-			});
-		});	
-	
-	</script>
+
+<link rel="stylesheet" href="/css/admin.css" type="text/css">
+
+<title>상품상세조회</title>
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
@@ -67,8 +50,7 @@
 		<td class="ct_write01">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<%-- <td width="105"><%=vo.getProdNo() %></td> --%>
-					<td width="105">${product.prodNo }</td>
+					<td width="105"><%=vo.getProdNo() %></td>
 				</tr>
 			</table>
 		</td>
@@ -81,20 +63,18 @@
 			상품명 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<%--<td class="ct_write01"><%=vo.getProdName() %></td> --%>
-		<td class="ct_write01">${product.prodName }</td>
+		<td class="ct_write01"><%=vo.getProdName() %></td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			상품이미지 <img 	src="/images/uploadFiles/${product.fileName }" width="3" height="3" align="absmiddle"/>
+			상품이미지 <img 	src="/images/uploadFiles/<%= vo.getFileName()%>" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<%-- <img src = "<%= vo.getFileName()%>"/> --%>
-			<img src = "/images/uploadFiles/${product.fileName }"/>
+			<img src = "/images/uploadFiles/<%= vo.getFileName()%>"/>
 		</td>
 	</tr>
 	<tr>
@@ -105,8 +85,7 @@
 			상품상세정보 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<%-- <td class="ct_write01"><%=vo.getProdDetail() %></td> --%>
-		<td class="ct_write01">${product.prodDetail }</td>
+		<td class="ct_write01"><%=vo.getProdDetail() %></td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -114,8 +93,7 @@
 	<tr>
 		<td width="104" class="ct_write">제조일자</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<%-- <td class="ct_write01"><%=vo.getManuDate() %></td> --%>
-		<td class="ct_write01">${product.manuDate }</td>
+		<td class="ct_write01"><%=vo.getManuDate() %></td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -123,8 +101,7 @@
 	<tr>
 		<td width="104" class="ct_write">가격</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<%-- <td class="ct_write01"><%=vo.getPrice() %></td> --%>
-		<td class="ct_write01">${product.price }</td>
+		<td class="ct_write01"><%=vo.getPrice() %></td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -132,8 +109,7 @@
 	<tr>
 		<td width="104" class="ct_write">등록일자</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<%-- <td class="ct_write01"><%=vo.getRegDate() %></td> --%>
-		<td class="ct_write01">${product.regDate }</td>
+		<td class="ct_write01"><%=vo.getRegDate() %></td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -152,7 +128,7 @@
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-					<a href="/product/addPurchase?prod_no=10004">구매</a>
+					<a href="/addPurchaseView.do?prodNo=<%= vo.getProdNo()%>">구매</a>
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23">
@@ -163,10 +139,7 @@
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-				<!--///////////////////////////////////////////////////////
 					<a href="javascript:history.go(-1)">이전</a>
-				 //////////////////////////////////////////////////////////// -->
-				 이전
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23">
