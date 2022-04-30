@@ -59,8 +59,40 @@
 			
 			
 			$( ".ct_list_pop td:nth-child(3)" ).on("click", function() {
+				
 				if(${param.menu == 'search'}){
-					self.location ="/product/getProduct?prodNo="+$(this).attr('prodNo');
+					
+					//////////////////////////AJAX 추가 변경//////////////////////////////////////////
+					//self.location ="/product/getProduct?prodNo="+$(this).attr('prodNo');
+					///////////////////////////////////////////////////////////////////
+					var prodNo = $(this).attr('prodNo');
+					
+					$.ajax(
+							{
+								url : "/product/json/getProduct/"+prodNo ,
+								method : "GET" ,
+								dataType : "json" ,
+								headers : {
+									"Accept" : "application/json",
+									"Content-Type" : "application/json"
+								},
+								success : function(JSONData , status) {
+									//alert(status);
+									//alert(JSONData);
+									var displayValue = "<h3>"
+															+"상품번호 : "+JSONData.prodNo+"<br/>"
+															+"상품명 : "+JSONData.prodName+"<br/>"
+															+"상품이미지 : "+JSONData.fileName+"<br/>"
+															+"상품상세정보 : "+JSONData.prodDetail+"<br/>"
+															+"제조일자 : "+JSONData.manuDate+"<br/>"
+															+"가격 : "+JSONData.price+"<br/>"
+															+"등록일자 : "+JSONData.regDateString+"<br/>"
+															+"</h3>";
+									$("h3").remove();
+									$("#"+prodNo+"").html(displayValue);
+								}
+							}
+					);
 				}else if(${param.menu == 'manage'}){
 					self.location ="/product/updateProduct?prodNo="+$(this).attr('prodNo');
 				}
@@ -69,6 +101,8 @@
 			
 			$( ".ct_list_pop td:nth-child(3)").css("color","green");
 			$("h7").css("color","blue");
+			
+			$(".ct_list_pop:nth-child(4n+6)").css("background-color" , "powderblue");
 			
 		});
 		
@@ -258,7 +292,10 @@
 			<td align="left">${product.regDate }</td>
 		</tr>
 		<tr>
-			<td colspan="11" bgcolor="D6D7D6" height="1"></td>
+			<!-- /////////////////////////////////////////////////////////////
+			<td colspan="11" bgcolor="D6D7D6" height="1"></td>			
+			///////////////////////////////////////////////////////////////-->
+			<td id="${product.prodNo }" colspan="11" bgcolor="D6D7D6" height="1"></td> 
 		</tr>	
 	</c:forEach>
 	
