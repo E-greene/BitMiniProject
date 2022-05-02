@@ -118,10 +118,39 @@
 			}); 
 		 });
 		
-		//=============  개인정보조회회 Event  처리 =============	
+		//=============  개인정보조회 Event  처리 =============	
 	 	$( "a:contains('개인정보조회')" ).on("click" , function() {
 	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$(self.location).attr("href","/user/getUser?userId=${sessionScope.user.userId}");
 		});
 		
+		//=============  판매상품등록 Event  처리 =============	
+		$(function() {
+			$( "a:contains('판매상품등록')" ).on("click" , function() {
+				$(self.location).attr("href","../product/addProductView.jsp");
+			});
+		});
+		
+		//=============  판매상품관리 Event  처리 =============	
+		$(function() {
+			$( "a:contains('판매상품관리')" ).on("click" , function() {
+				$(self.location).attr("href","/product/listProduct?menu=manage");
+			});
+		});
+		
+		//=============  상 품 검 색 Event  처리 =============	
+		$(function() {
+			$( "a:contains('상 품 검 색')" ).on("click" , function() {
+				$(self.location).attr("href","/product/listProduct?menu=search");
+			});
+		});
+			
+		//=============  최근 본 상품 Event  처리 =============
+		$(function() {
+			$( "a:contains('최근본상품')" ).on("click" , function() {
+				popWin = window.open("/history.jsp",
+						"popWin",
+						"left=300, top=200, width=300, height=200, marginwidth=0, marginheight=0, scrollbars=no, scrolling=no, menubar=no, resizable=no");
+			});
+		});
 	</script>  
