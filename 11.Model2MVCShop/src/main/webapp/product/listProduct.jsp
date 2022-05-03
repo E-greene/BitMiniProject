@@ -71,9 +71,14 @@
         }
     </style>
 	
-	<link rel="stylesheet" href="/css/admin.css" type="text/css">
+	<!-- <link rel="stylesheet" href="/css/admin.css" type="text/css"> -->
+	
+	<!-- 
 	
 	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	
+	  -->
+	
 	<script type="text/javascript">
 		//검색 / page 두가지 경우 모두 Form 전송을 위해 JavaScript 이용  
 		function fncGetUserList(currentPage) {
@@ -84,14 +89,23 @@
 		}
 		
 		$(function() {
+			
+			$( "td:nth-child(2)" ).on("click", function() {
+				if(${param.menu == 'search'}){
+					self.location ="/product/getProduct?prodNo="+$(this).attr('prodNo');
+				}else if(${param.menu == 'manage'}){
+					self.location ="/product/updateProduct?prodNo="+$(this).attr('prodNo');
+				}
+			});
+			
+			
 			$( "button.btn.btn-default:contains('검색')" ).on("click", function() {
 				fncGetUserList('1');		
 			});
 			
 			
-			$( ".ct_list_pop td:nth-child(3)" ).on("click", function() {
+			$( "td:nth-child(5) > i" ).on("click", function() {
 				
-				if(${param.menu == 'search'}){
 					
 					//////////////////////////AJAX 추가 변경//////////////////////////////////////////
 					//self.location ="/product/getProduct?prodNo="+$(this).attr('prodNo');
@@ -110,7 +124,7 @@
 								success : function(JSONData , status) {
 									//alert(status);
 									//alert(JSONData);
-									var displayValue = "<h3>"
+									var displayValue = "<h6>"
 															+"상품번호 : "+JSONData.prodNo+"<br/>"
 															+"상품명 : "+JSONData.prodName+"<br/>"
 															+"상품이미지 : "+JSONData.fileName+"<br/>"
@@ -119,14 +133,12 @@
 															+"가격 : "+JSONData.price+"<br/>"
 															+"등록일자 : "+JSONData.regDateString+"<br/>"
 															+"</h3>";
-									$("h3").remove();
+									$("h6").remove();
 									$("#"+prodNo+"").html(displayValue);
 								}
 							}
 					);
-				}else if(${param.menu == 'manage'}){
-					self.location ="/product/updateProduct?prodNo="+$(this).attr('prodNo');
-				}
+				
 			});
 			
 			
@@ -140,18 +152,18 @@
 	</script>
 </head>
 
-<body bgcolor="#ffffff" text="#000000">
+<body>
 	
 	<!-- ToolBar Start /////////////////////////////////////-->
 	<jsp:include page="/layout/toolbar.jsp" />
    	<!-- ToolBar End /////////////////////////////////////-->
 	
-	<div style="width:98%; margin-left:10px;">
+	<!-- <div style="width:98%; margin-left:10px;"> -->
 	<!-- 
 	<form name="detailForm" action="/product/listProduct?menu=${param.menu}" method="post">
 	
 	 -->
-		<form name="detailForm">
+		
 		
 		<!-- /////////////////////11 Refactoring title////////////////
 		<table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
@@ -242,7 +254,7 @@
 			    	
 				</div>	    		
 	    			
-			</div>
+			
 		
 <!-- //////////////////////////////////////11Refactoring 검색 수정 ///////////////////////////////////
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
@@ -294,9 +306,47 @@
 			</tr>
 		</table>
 //////////////////////////////////////////////////////////////////////////////////////////////////// -->		
-
+		
+		     	 <!--  table Start /////////////////////////////////////-->
+			      <table class="table table-hover table-striped" >
+			      
+			        <thead>
+			          <tr>
+			            <th align="center">No</th>
+			            <th align="left" >상품</th>
+			            <th align="left">가격</th>
+			            <th align="left">등록일</th>
+			            <th align="left">간략정보</th>            
+			            <th align="left">현재상태</th>
+			          </tr>
+			        </thead>
+			       
+					<tbody>
+					
+					  <c:set var="i" value="0" />
+					  <c:forEach var="product" items="${list}">
+						<c:set var="i" value="${ i+1 }" />
+						<tr>
+						  <td align="center">${ i }</td>
+						  <td align="left" prodNo="${product.prodNo }">${product.prodName }</td>
+						  <td align="left" >${product.price }</td>
+						  <td align="left">${product.regDate }</td>
+						  <td align="left">
+						  	<i class="glyphicon glyphicon-ok" prodNo="${product.prodNo }" id="${product.prodNo }"></i>
+						  	<input type="hidden" value="${product.prodNo}">
+						  </td>
+						  <td align="left"></td>
+						</tr>
+			          </c:forEach>
+			        
+			        </tbody>
+			      
+			      </table>
+				  <!--  table End /////////////////////////////////////-->
+				</div>
 		
 		
+	<!--	
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 			<tr>
 				<%-- /////////////////////////// EL / JSTL 적용으로 주석 처리 //////////////////////////////
@@ -308,9 +358,9 @@
 			<tr>
 				<td class="ct_list_b" width="100">No</td>
 				<td class="ct_line02"></td>
-				<!-- ///////////////////////////////////////////////////
+				///////////////////////////////////////////////////
 				<td class="ct_list_b" width="150">상품명</td>		
-				/////////////////////////////////////////////////////// -->
+				///////////////////////////////////////////////////////
 				<td class="ct_list_b" width="150">
 					click<br>
 					<h7>상품 상세정보 보기</h7>		
@@ -368,7 +418,7 @@
 				<tr class="ct_list_pop">
 					<td align="center">${i }</td>
 					<td></td>
-						<!-- /////////////////////////////////////////////////////////////////////////////////////
+						/////////////////////////////////////////////////////////////////////////////////////
 						<c:choose>
 							<c:when test="${param.menu == 'search'}">
 								<td align="left"><a href="/product/getProduct?prodNo=${product.prodNo }">${product.prodName }</a></td>
@@ -377,7 +427,7 @@
 								<td align="left"><a href="/product/updateProduct?prodNo=${product.prodNo }">${product.prodName }</a></td>
 							</c:when>
 						</c:choose>
-						 ////////////////////////////////////////////////////////////////////////////////////////-->
+						 ////////////////////////////////////////////////////////////////////////////////////////
 					<td align="left" prodNo="${product.prodNo }">${product.prodName }</td>
 					<td></td>
 					<td align="left">${product.price }</td>
@@ -385,16 +435,18 @@
 					<td align="left">${product.regDate }</td>
 				</tr>
 				<tr>
-					<!-- /////////////////////////////////////////////////////////////
+					/////////////////////////////////////////////////////////////
 					<td colspan="11" bgcolor="D6D7D6" height="1"></td>			
-					///////////////////////////////////////////////////////////////-->
+					///////////////////////////////////////////////////////////////
 					<td id="${product.prodNo }" colspan="11" bgcolor="D6D7D6" height="1"></td> 
 				</tr>	
 			</c:forEach>
 			
 				
 		</table>
-		
+  -->	
+  
+  		<!--	
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 			<tr>
 				<td align="center">
@@ -422,10 +474,15 @@
 		    	</td>
 			</tr>
 		</table>
+		  -->
 		<!--  페이지 Navigator 끝 -->
 		
-		</form>
+		
+		<!-- PageNavigation Start... -->
+		<jsp:include page="../common/pageNavigator_new.jsp"/>
+		<!-- PageNavigation End... -->
+		
 	
-	</div>
+	<!-- </div> -->
 </body>
 </html>

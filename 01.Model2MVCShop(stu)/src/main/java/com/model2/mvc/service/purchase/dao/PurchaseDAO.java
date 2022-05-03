@@ -130,6 +130,7 @@ public class PurchaseDAO {
 			userVO.setEmail(rs.getString("email"));
 			userVO.setRegDate(rs.getDate("reg_date"));
 			
+			purchaseVO = new PurchaseVO();
 			purchaseVO.setBuyer(userVO);
 			purchaseVO.setPurchaseProd(productVO);
 			purchaseVO.setTranNo(rs.getInt("tran_no"));

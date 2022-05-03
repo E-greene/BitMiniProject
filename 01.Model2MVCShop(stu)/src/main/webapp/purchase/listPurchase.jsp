@@ -101,7 +101,7 @@
 	
 	<tr class="ct_list_pop">
 		<td align="center">
-			<a href="/getPurchase.do?tranNo=<%=purchaseVO.getTranNo() %>"><%=no-- %></a>
+			<a href="/updatePurchaseView.do?tranNo=<%=purchaseVO.getTranNo() %>"><%=no-- %></a>
 		</td>
 		<td></td>
 		<td align="left">

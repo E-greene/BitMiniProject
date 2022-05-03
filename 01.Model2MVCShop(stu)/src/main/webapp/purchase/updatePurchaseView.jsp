@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="com.model2.mvc.service.purchase.vo.PurchaseVO" %>
+<%@ page import="com.model2.mvc.service.user.vo.UserVO" %>
+
+<%
+	PurchaseVO purchaseVO = (PurchaseVO)request.getAttribute("purchaseVO");
+	
+	UserVO userVO = (UserVO)session.getAttribute("user");
+
+%> 
 <!DOCTYPE html>
 
 
@@ -22,7 +31,7 @@
 
 <body bgcolor="#ffffff" text="#000000">
 
-<form name="updatePurchase" method="post"	action="/updatePurchase.do?tranNo=10144">
+<form name="updatePurchase" method="post"	action="/updatePurchase.do?tranNo=<%= purchaseVO.getTranNo()%>">
 
 <table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -50,8 +59,8 @@
 	<tr>
 		<td width="104" class="ct_write">구매자아이디</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">user18</td>
-		<input type="hidden" name="buyerId" value="user18">
+		<td class="ct_write01"><%=purchaseVO.getBuyer().getUserId() %></td>
+		<input type="hidden" name="buyerId" value="<%=purchaseVO.getBuyer().getUserId() %>">
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -75,7 +84,7 @@
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input 	type="text" name="receiverName" 	class="ct_input_g" style="width: 100px; height: 19px" 
-							maxLength="20" value="SCOTT" />
+							maxLength="20" value="<%=purchaseVO.getBuyer().getUserName() %>" />
 		</td>
 	</tr>
 	<tr>
@@ -86,7 +95,7 @@
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input 	type="text" name="receiverPhone" class="ct_input_g" style="width: 100px; height: 19px" 
-							maxLength="20" value="1011101" />
+							maxLength="20" value="<%=purchaseVO.getReceiverPhone() %>" />
 		</td>
 	</tr>
 
@@ -98,7 +107,7 @@
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input 	type="text" name="receiverAddr" class="ct_input_g" style="width: 100px; height: 19px" 
-							maxLength="20" value="null" />
+							maxLength="20" value="<%=purchaseVO.getDivyAddr() %>" />
 		</td>
 	</tr>
 	<tr>
@@ -109,7 +118,7 @@
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input 	type="text" name="receiverRequest" 	class="ct_input_g" style="width: 100px; height: 19px" 
-							maxLength="20" value="hhrh" />
+							maxLength="20" value="<%=purchaseVO.getDivyRequest() %>" />
 		</td>
 	</tr>
 	<tr>

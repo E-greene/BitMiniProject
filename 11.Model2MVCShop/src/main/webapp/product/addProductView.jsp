@@ -162,7 +162,7 @@
 		<div class="row">
 	  		<div class="col-xs-4 col-md-2"><strong>상품이미지</strong></div>
 			<div >
-				<input type="text" class="col-xs-8 col-md-4" name="fileName" id="fileName">
+				<input type="file" class="col-xs-8 col-md-4" name="fileName" id="fileName">
 			</div>
 		</div>
 		
