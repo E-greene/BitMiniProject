@@ -110,6 +110,7 @@
 	
 		<!--  화면구성 div Start /////////////////////////////////////-->
 		<div class="container">
+		<input type="hidden" name="prodNo" value="${product.prodNo }"/>
 		
 			<div class="page-header">
 		       <h3 class=" text-info">상품 수정</h3>
