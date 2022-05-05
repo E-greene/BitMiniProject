@@ -213,5 +213,35 @@ public class PurchaseDAO {
 		con.close();
 		pStmt.close();
 	}
+	
+	public void updatePurchase(PurchaseVO purchaseVO) throws Exception {
+		System.out.println("PurchaseDAO updatePurchase() ½ÃÀÛ======>");
+		
+		Connection con =DBUtil.getConnection();
+		
+		String sql = "UPDATE transaction "
+				+ "SET payment_option = ?, receiver_name= ?, receiver_phone=?, demailaddr=?, dlvy_request=?, dlvy_date=? "
+				+ "WHERE tran_no = ? ";
+		
+		PreparedStatement pStmt = con.prepareStatement(sql);
+		pStmt.setString(1,purchaseVO.getPaymentOption());
+		pStmt.setString(2,purchaseVO.getReceiverName());
+		pStmt.setString(3,purchaseVO.getReceiverPhone());
+		pStmt.setString(4,purchaseVO.getDivyAddr());
+		pStmt.setString(5,purchaseVO.getDivyRequest());
+		pStmt.setString(6,purchaseVO.getDivyDate());
+		pStmt.setInt(7,purchaseVO.getTranNo());
+		
+		int updatePurchaseOk = pStmt.executeUpdate();
+		
+		if(updatePurchaseOk == 1) {
+			System.out.println("purchase updatePurchase Success");
+		}else {
+			System.out.println("purchase updatePurchase Fail");
+		}
+		
+		con.close();
+		pStmt.close();
+	}
 
 }

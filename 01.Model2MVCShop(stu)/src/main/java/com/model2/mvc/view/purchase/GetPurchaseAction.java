@@ -12,6 +12,9 @@ public class GetPurchaseAction extends Action{
 
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		System.out.println("GetPurchaseAction Ω√¿€");
+
+		
 		int tranNo = Integer.parseInt(request.getParameter("tranNo"));
 		
 		//HttpSession httpSession = request.getSession(true);

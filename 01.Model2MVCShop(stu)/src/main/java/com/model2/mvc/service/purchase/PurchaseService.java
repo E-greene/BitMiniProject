@@ -15,5 +15,7 @@ public interface PurchaseService {
 	
 	public void updateTranCode(PurchaseVO purchaseVO) throws Exception;
 	
+	public void updatePurchase(PurchaseVO purchaseVO) throws Exception;
+	
 	
 }

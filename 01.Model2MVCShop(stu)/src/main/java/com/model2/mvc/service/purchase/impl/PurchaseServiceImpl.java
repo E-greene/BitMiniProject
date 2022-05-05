@@ -35,4 +35,9 @@ public class PurchaseServiceImpl implements PurchaseService {
 		purchaseDAO.updateTranCode(purchaseVO);
 	}
 	
+	public void updatePurchase(PurchaseVO purchaseVO) throws Exception{
+		System.out.println("===PurchaseServiceImpl updatePurchase() Ω√¿€=========");
+		purchaseDAO.updatePurchase(purchaseVO);
+	}
+	
 }
