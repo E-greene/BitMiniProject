@@ -63,4 +63,9 @@ public class UserServiceImpl implements UserService{
 		}
 		return result;
 	}
+	
+	public int idCheck(String userId) {
+        int cnt = userDao.idCheck(userId);
+        return cnt;
+    }
 }

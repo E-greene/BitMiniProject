@@ -62,6 +62,7 @@
  	<!-- jQuery UI toolTip 사용 CSS-->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<!-- jQuery UI toolTip 사용 JS-->
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
 	<!--  ///////////////////////// CSS ////////////////////////// -->
@@ -88,6 +89,29 @@
 			$("form").attr("method","POST").attr("action","/product/listProduct?menu=${param.menu}").submit();
 		}
 		
+/* 		$(function() {
+			var searchSource = ["vaio vgn FS70B","자전거","보르도","보드세트","인라인","삼성센스 2G","삼성센스","연꽃","아몬드","달러구트 꿈 백화점"];
+			$("#searchKeyword").autocomplete({ //오토컴플릿 시작
+				source = searchSource, //source는 자동완성 대상
+				select : function(event, ui){
+					console.log(ui.item);
+				},
+				focus : function(event, ui){
+					return false; //한글에러잡기용도?
+				},
+				minLength : 1, //최소 글자수
+				autoFocus : true,
+				classes : {
+					"ui-autocomplete" : "highlight"
+				},
+				delay : 500, //검색창에 글자 써지고 나서 autocomplete 창 뜰 때까지 걸리는 시간 (ms)
+				position : { my : "right top", at: "right bottom"},
+				close : function(event){
+					console.log(event);
+				}
+			});	
+		});	 */	
+		
 		$(function() {
 			
 			$( "td:nth-child(2)" ).on("click", function() {
@@ -102,6 +126,8 @@
 			$( "button.btn.btn-default:contains('검색')" ).on("click", function() {
 				fncGetUserList('1');		
 			});
+			
+
 			
 			
 			$( "td:nth-child(5) > i" ).on("click", function() {
@@ -343,7 +369,38 @@
 			      
 			      </table>
 				  <!--  table End /////////////////////////////////////-->
-				</div>
+				  
+<%-- 				  <c:set var="i" value="0" />
+				  <c:forEach var="product" items="${list}">
+					<c:set var="i" value="${ i+1 }" />
+						<div class="row">
+						  <div class="col-sm-6 col-md-4">
+						  
+						    <div class="thumbnail">
+							      <h2>${i }</h2>
+							      <img src="/images/uploadFiles/${product.fileName }"/>
+						      <div class="caption">
+							        <h3 "left" prodNo="${product.prodNo }">${product.prodName }</h3>							        
+							        <div>${product.price }</div>
+							        <div>${product.fileName }</div>
+							        <div>${product.regDate }</div>
+							        <div>
+							        	<i class="glyphicon glyphicon-ok" prodNo="${product.prodNo }" id="${product.prodNo }"></i>
+							  			<input type="hidden" value="${product.prodNo}">
+							        </div>
+						      </div>
+						    </div>
+						    
+						  </div>
+						</div>
+		          </c:forEach> --%>
+				  
+				  
+				  
+				  
+				  
+				  
+			</div>
 		
 		
 	<!--	

@@ -104,6 +104,8 @@ public class ProductController {
 	public String updateProduct(@RequestParam("prodNo") int prodNo, Model model) throws Exception {
 		
 		System.out.println("/product/updateProduct : GET");
+		
+		
 		// Business Logic
 		Product product = productService.getProduct(prodNo);
 		
@@ -119,6 +121,8 @@ public class ProductController {
 		
 		System.out.println("/product/updateProduct : POST");
 		// Business Logic
+		String manuDate = product.getManuDate().replace("-","");
+		product.setManuDate(manuDate);
 		
 		productService.updateProduct(product);
 		

@@ -10,7 +10,7 @@
 	
 	<div class="container">
 	       
-		<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
+		<a class="navbar-brand" href="/index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> HOME</a>
 		
 		<!-- toolBar Button Start //////////////////////// -->
 		<div class="navbar-header">
@@ -37,10 +37,10 @@
 	                         <span class="caret"></span>
 	                     </a>
 	                     <ul class="dropdown-menu">
-	                         <li><a href="#">개인정보조회</a></li>
+	                         <li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>  개인정보조회</a></li>
 	                         
 	                         <c:if test="${sessionScope.user.role == 'admin'}">
-	                         	<li><a href="#">회원정보조회</a></li>
+	                         	<li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>  회원정보조회</a></li>
 	                         </c:if>
 	                         
 	                         <li class="divider"></li>
@@ -52,7 +52,8 @@
 	               <c:if test="${sessionScope.user.role == 'admin'}">
 		              <li class="dropdown">
 		                     <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-		                         <span >판매상품관리</span>
+		                     	 <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+		                         <span >  판매상품관리</span>
 		                         <span class="caret"></span>
 		                     </a>
 		                     <ul class="dropdown-menu">
@@ -67,14 +68,15 @@
 	              <!-- 구매관리 DrowDown -->
 	              <li class="dropdown">
 	                     <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-	                         <span >상품구매</span>
+	                     	 <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+	                         <span > 상품구매</span>
 	                         <span class="caret"></span>
 	                     </a>
 	                     <ul class="dropdown-menu">
-	                         <li><a href="#">상 품 검 색</a></li>
+	                         <li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>  상 품 검 색</a></li>
 	                         
 	                         <c:if test="${sessionScope.user.role == 'user'}">
-	                           <li><a href="#">구매이력조회</a></li>
+	                           <li><a href="#"> <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>  구매이력조회</a></li>
 	                         </c:if>
 	                         
 	                         <li><a href="#">최근본상품</a></li>
@@ -83,10 +85,11 @@
 	                     </ul>
 	                 </li>
 	                 
-	                 <li><a href="#">etc...</a></li>
+	                 <li><a href="#"></a></li>
 	             </ul>
 	             
 	             <ul class="nav navbar-nav navbar-right">
+	             	<li><a href="#">${sessionScope.user.userId} 님 환영합니다.</a></li>
 	                <li><a href="#">로그아웃</a></li>
 	            </ul>
 		</div>

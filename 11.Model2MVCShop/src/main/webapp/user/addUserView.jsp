@@ -24,10 +24,35 @@
         	border: 3px solid #D6CDB7;
             margin-top: 10px;
         }
+        
+        .id_ok{color:#6A82FB; display: none;}
+        .id_already{color:#6A82FB; display: none;}
     </style>
     
      <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
+		
+		//아이디 체크
+		function checkId(){
+			//var userId = $('#userId').val(); // id값이 userId인 인력란의 값 저장
+			$.ajax({
+				url:'/user/json/checkId',
+				type:'post',
+				data:{id:$('#userId').val()},
+				success:function(cnt){ //컨트롤러에서 넘어온 cnt값 받기
+					if(cnt == 0) { //0이면 사용가능 아이디
+						$('.id_ok').css("display","inline-block");
+						$('.id_already').css("display", "none");
+					}else{
+						$('.id_ok').css("display","none");
+						$('.id_already').css("display", "inline-block");
+					}
+				},
+				error:function(){
+					alert("에러입니다");
+				}
+			});
+		};
 	
 		//============= "가입"  Event 연결 =============
 		 $(function() {
@@ -174,7 +199,7 @@
 		<!-- form Start /////////////////////////////////////-->
 		<form class="form-horizontal">
 		
-		  <div class="form-group">
+<!-- 		  <div class="form-group">
 		    <label for="userId" class="col-sm-offset-1 col-sm-3 control-label">아 이 디</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" id="userId" name="userId" placeholder="중복확인하세요"  readonly>
@@ -186,6 +211,16 @@
 		      <button type="button" class="btn btn-info">중복확인</button>
 		    </div>
 		  </div>
+ -->
+		  
+		  <div class="form-group">
+		    <label for="userId" class="col-sm-offset-1 col-sm-3 control-label">아 이 디</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" id="userId" name="userId" placeholder="아이디를 입력하세요" oninput="checkId()" />
+		      <span class="id_ok">사용 가능한 아이디입니다.</span>
+		      <span class="id_already">사용중인 아이디 입니다.</span>
+		    </div>
+		  </div>		  
 		  
 		  <div class="form-group">
 		    <label for="password" class="col-sm-offset-1 col-sm-3 control-label">비밀번호</label>

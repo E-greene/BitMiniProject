@@ -18,8 +18,7 @@
 	
 <head>
 	<meta charset="EUC-KR">
-	
-	<!-- 참조 : http://getbootstrap.com/css/   -->
+	<!-- 참조 : http://getbootstrap.com/css/   참조 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
 	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
@@ -28,8 +27,20 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
+	<!-- Bootstrap Dropdown Hover CSS -->
+   <link href="/css/animate.min.css" rel="stylesheet">
+   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   
+    <!-- Bootstrap Dropdown Hover JS -->
+   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+	
 	<!--  ///////////////////////// CSS ////////////////////////// -->
-	<style></style>
+	<style>
+ 		body {
+            padding-top : 50px;
+        }
+     </style>
+
    	
    	<!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
@@ -47,6 +58,13 @@
 			//==> 추가된부분 : "addUser"  Event 연결
 			$("a[href='#' ]:contains('로 그 인')").on("click" , function() {
 				self.location = "/user/login"
+			});
+		});
+		
+		//=============  상 품 검 색 Event  처리 =============	
+		$(function() {
+			$( "a:contains('상품검색 ')" ).on("click" , function() {
+				$(self.location).attr("href","/product/listProduct?menu=search");
 			});
 		});
 		
@@ -131,7 +149,7 @@
 							<i class="glyphicon glyphicon-shopping-cart"></i> 상품구매
 	    			</div>
 					<ul class="list-group">
-						 <li class="list-group-item"><a href="#">상품검색</a></li>
+						 <li class="list-group-item"><a href="#">상품검색 </a><i class="glyphicon glyphicon-search" aria-hidden="true"></i></li>
 						  <li class="list-group-item">
 						  	<a href="#">구매이력조회</a> <i class="glyphicon glyphicon-ban-circle"></i>
 						  </li>

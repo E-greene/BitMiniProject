@@ -53,15 +53,15 @@
    	<div class="container ">
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Model2MVCShop </h1>
-        <p>J2SE , DBMS ,JDBC , Servlet & JSP, Java Framework , HTML5 , UI Framework 학습 후 Mini-Project 진행</p>
+        <h1 align="center">Model2MVCShop </h1>
+        <!-- <p>J2SE , DBMS ,JDBC , Servlet & JSP, Java Framework , HTML5 , UI Framework 학습 후 Mini-Project 진행</p> -->
      </div>
     </div>
 
 	<!-- 참조 : http://getbootstrap.com/css/   : container part..... -->
 	<div class="container">
 		<div>
-			<h1>오늘의 책</h1>
+			<h1 align="center"></h1>
 		</div>
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 			  <!-- Indicators -->
@@ -75,12 +75,12 @@
 			  <div class="carousel-inner" role="listbox">
 			  
 			    <div class="item active">
-			      <img class="first-slide" src="./images/b1.jpg" alt="First slide">
+			      <img class="first-slide" src="./images/BHlbAAAAvetFNwAA.jpg" alt="First slide">
 
 			    </div>
 			    
 			    <div class="item">
-			      <img class="second-slide" src="./images/b2.jpg"  alt="Second slide">
+			      <img class="second-slide" src="./images/b1.jpg"  alt="Second slide">
 
 			    </div>
 			    

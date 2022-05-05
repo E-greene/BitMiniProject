@@ -22,6 +22,7 @@ public class AddProductAction extends Action {
 	@Override
 	public String execute( HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		System.out.println("addProductAction 시작");
 //		ProductVO productVO = new ProductVO();
 //		
 //		productVO.setProdName(request.getParameter("prodName"));
@@ -37,7 +38,7 @@ public class AddProductAction extends Action {
 		
 		if (FileUpload.isMultipartContent(request)) {
 			
-			String temDir = "C:\\workspace\\01.Model2MVCShot(stu)\\src\\main\\webapp\\images\\uploadFiles\\";
+			String temDir = "C:\\workspace\\01.Model2MVCShop(stu)\\src\\main\\webapp\\images\\uploadFiles\\";
 			//String demDir2 = "/uploadFiles/";
 			
 			DiskFileUpload fileUpload = new DiskFileUpload();
@@ -58,20 +59,19 @@ public class AddProductAction extends Action {
 				for (int i=0; i<Size; i++) {
 					FileItem fileItem = (FileItem) fileItemList.get(i);
 					// isFormField()를 통해서 파일형식인지 파라미터인지 구분한다. 파라미터라면 true
-					if (fileItem.isFormField()) {
 						if(fileItem.isFormField()) {
 							if(fileItem.getFieldName().equals("manuDate")) {
 								token = new StringTokenizer(fileItem.getString("EUC-KR"),"-");
 								String manuDate = token.nextToken() + token.nextToken() + token.nextToken();
 								productVO.setManuDate(manuDate);
 							}
-						}
-						else if(fileItem.getFieldName().equals("prodName")) {
-							productVO.setProdName(fileItem.getString("EUC-KR"));
-						}else if(fileItem.getFieldName().equals("prodDetail")) {
-							productVO.setProdDetail(fileItem.getString("EUC-KR"));
-						}else if(fileItem.getFieldName().equals("price")) {
-							productVO.setPrice(Integer.parseInt(fileItem.getString("EUC-KR")));
+							else if(fileItem.getFieldName().equals("prodName")) {
+								productVO.setProdName(fileItem.getString("EUC-KR"));
+							}else if(fileItem.getFieldName().equals("prodDetail")) {
+								productVO.setProdDetail(fileItem.getString("EUC-KR"));
+							}else if(fileItem.getFieldName().equals("price")) {
+								productVO.setPrice(Integer.parseInt(fileItem.getString("EUC-KR")));
+							}
 						}else {		//파일 형식이면
 							
 							if(fileItem.getSize()>0) {	// 파일을 저장하는 if
@@ -92,10 +92,9 @@ public class AddProductAction extends Action {
 								productVO.setFileName("../../images/empty.GIF");
 							}
 						} // end else
-							
-					}
 				} // end for
 				
+				System.out.println("AddproductAction productVO 확인 : "+productVO);
 				ProductService service = new ProductServiceImpl();
 				service.addProduct(productVO);
 				

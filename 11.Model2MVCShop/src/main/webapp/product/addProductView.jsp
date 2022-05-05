@@ -94,7 +94,8 @@
 	$(function() {
 		$( "button.btn.btn-primary:contains('취소')" ).on("click" , function() {
 			//alert($("td.ct_btn01:contains('취소')").html());
-			$("form")[0].reset();
+			//$("form")[0].reset();
+			history.go(-1);
 		});
 	});
 	

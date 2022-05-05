@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.model2.mvc.common.Page;
@@ -137,5 +138,15 @@ public class UserRestController {
 		map.put("search", search);
 		
 		return map;
+	}
+	
+	@RequestMapping (value="json/checkId")
+	public int idCheck(@RequestParam("id") String userId ) {
+		
+        System.out.println("==userIdCheck start==");
+        System.out.println("전달받은 id:"+userId);
+        int cnt = userService.idCheck(userId);
+        System.out.println("확인 결과:"+cnt);
+        return cnt;
 	}
 }
