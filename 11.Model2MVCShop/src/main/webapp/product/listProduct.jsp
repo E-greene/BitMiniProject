@@ -89,28 +89,25 @@
 			$("form").attr("method","POST").attr("action","/product/listProduct?menu=${param.menu}").submit();
 		}
 		
-/* 		$(function() {
-			var searchSource = ["vaio vgn FS70B","자전거","보르도","보드세트","인라인","삼성센스 2G","삼성센스","연꽃","아몬드","달러구트 꿈 백화점"];
+ 		$(function() {
+			var searchSource = ["vaio vgn FS70B","자전거","인절미","자동차","자라","자물쇠","보르도","보드세트","보드카","다리미","인라인","삼치","삼성센스 2G","삼성센스","연꽃","아몬드","아이스아메리카노","달러구트 꿈 백화점"];
 			$("#searchKeyword").autocomplete({ //오토컴플릿 시작
-				source = searchSource, //source는 자동완성 대상
-				select : function(event, ui){
-					console.log(ui.item);
-				},
+				source : searchSource, //source는 자동완성 대상
+				//select : function(event, ui){
+				//	console.log(ui.item);
+				//},
 				focus : function(event, ui){
-					return false; //한글에러잡기용도?
+					return false; 
 				},
 				minLength : 1, //최소 글자수
 				autoFocus : true,
-				classes : {
-					"ui-autocomplete" : "highlight"
-				},
-				delay : 500, //검색창에 글자 써지고 나서 autocomplete 창 뜰 때까지 걸리는 시간 (ms)
-				position : { my : "right top", at: "right bottom"},
-				close : function(event){
-					console.log(event);
-				}
+				//classes : {
+				//	"ui-autocomplete" : "highlight"
+				//},
+				delay : 100, //검색창에 글자 써지고 나서 autocomplete 창 뜰 때까지 걸리는 시간 (ms)
+				//disabled : true // 자동완성 기능 끄기
 			});	
-		});	 */	
+		});
 		
 		$(function() {
 			

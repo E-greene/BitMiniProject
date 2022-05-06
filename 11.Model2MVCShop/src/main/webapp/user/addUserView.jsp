@@ -26,7 +26,7 @@
         }
         
         .id_ok{color:#6A82FB; display: none;}
-        .id_already{color:#6A82FB; display: none;}
+        .id_already{color:red; display: none;}
     </style>
     
      <!--  ///////////////////////// JavaScript ////////////////////////// -->
@@ -62,6 +62,17 @@
 			});
 		});	
 		
+		$(function(){
+			$('#password2').blur(function(){
+				if($('#password').val() != $('#password2').val()){
+					if($('#password2').val() != ''){
+						alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요");
+						$('#password2').val('');
+						$('#password2').focus();
+					}
+				}
+			})
+		});
 		
 		//============= "취소"  Event 처리 및  연결 =============
 		$(function() {
@@ -239,7 +250,7 @@
 		  <div class="form-group">
 		    <label for="userName" class="col-sm-offset-1 col-sm-3 control-label">이름</label>
 		    <div class="col-sm-4">
-		      <input type="password" class="form-control" id="userName" name="userName" placeholder="회원이름">
+		      <input type="text" class="form-control" id="userName" name="userName" placeholder="회원이름">
 		    </div>
 		  </div>
 		  
